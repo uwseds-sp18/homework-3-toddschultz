@@ -6,7 +6,6 @@ import unittest
 import os
 import homework3 as hw3
 
-# pathname = 'C:\\Users\\todds\\Documents\\GitHub\\DATA515\\homework-3-toddschultz'
 pathname = '.'
 
 class HW3_UnitTests(unittest.TestCase):
@@ -47,14 +46,12 @@ class HW3_UnitTests(unittest.TestCase):
         # pathname = 'C:\\Users\\todds\\Documents\\GitHub\\DATA515\\homework-3-toddschultz'
         dftest = hw3.create_dataframe(pathname)
         teststr = dftest['video_id'].map(str) + dftest['language']
-        passtest = (teststr.nunique() == dftest.shape[0])
-        
-        self.assertTrue(passtest)
+        self.assertTrue(teststr.nunique() == dftest.shape[0])
 
     def test_invalid_path(self):
         # test for ValueError for invalid path test path
+        invalidpath = os.path.join('.', 'no', 'path', 'should', 'be', 'named', 'this')
         with self.assertRaises(ValueError):
-            invalidpath = os.path.isdir(os.path.join('.', 'no', 'path', 'should', 'be', 'named', 'this'))
             hw3.create_dataframe(invalidpath)
 
 
