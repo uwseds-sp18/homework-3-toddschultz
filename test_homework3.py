@@ -8,18 +8,17 @@ import homework3 as hw3
 
 pathname = '.'
 
+
 class HW3_UnitTests(unittest.TestCase):
 
     def test_number_rows(self):
         # test for more than 10 rows in the dataframe
-        # pathname = 'C:\\Users\\todds\\Documents\\GitHub\\DATA515\\homework-3-toddschultz'
         dftest = hw3.create_dataframe(pathname)
         self.assertTrue(dftest.shape[0] >= 10)
         
     def test_column_names(self):
         # test for exactly and only the column names video_id, category_id, 
         # and language
-        # pathname = 'C:\\Users\\todds\\Documents\\GitHub\\DATA515\\homework-3-toddschultz'
         dftest = hw3.create_dataframe(pathname)
         
         # if we test for the number of columns to match the number of exact column
@@ -43,7 +42,6 @@ class HW3_UnitTests(unittest.TestCase):
         
     def test_key_columns(self):
         # test for columns make a key
-        # pathname = 'C:\\Users\\todds\\Documents\\GitHub\\DATA515\\homework-3-toddschultz'
         dftest = hw3.create_dataframe(pathname)
         teststr = dftest['video_id'].map(str) + dftest['language']
         self.assertTrue(teststr.nunique() == dftest.shape[0])
